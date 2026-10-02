@@ -14,12 +14,4 @@ print(exp.polonais())
 
 dico = {"y":5}
 print(plus.evaluer(dico))
-moins = Noeud("-")
-moins.ajout_noeud(y)
-moins.ajout_noeud(deux)
-print(moins.evaluer(dico))
-fois = Noeud("*")
-fois.ajout_noeud(y)
-fois.ajout_noeud(deux)
-print(fois.evaluer(dico))
-print(y.evaluer(dico))
+print(exp.evaluer(dico))

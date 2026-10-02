@@ -1,3 +1,5 @@
+import numpy as np
+import matplotlib as plt
 class Noeud: 
     def __init__(self , valeur):
         self.valeur = valeur
@@ -12,29 +14,15 @@ class Noeud:
             expression += " " + e.polonais()
         return expression
 
-    def evaluer(self,dico):
-        if isinstance(self.valeur,str):
-            if len(self.enfant) == 2:
-                if isinstance(self.enfant[0].valeur,str):
-                    a = dico[self.enfant[0].valeur]
-                else: 
-                    a = self.enfant[0].valeur
+    def evaluer(self,variables):
+        if isinstance(self.valeur,(float,int)):return self.valeur
+        if self.valeur in variables : return variables[self.valeur]
+        if len(self.enfant)>0:
+            if self.valeur == "+": return self.enfant[0].evaluer(variables) + self.enfant[1].evaluer(variables)
+            elif self.valeur == 'exp': return np.exp(self.enfant[0].evaluer(variables))
+        raise ValueError("Opérateur/Noeud inconnu")
 
-                if isinstance(self.enfant[1].valeur,str):
-                    b = dico[self.enfant[1].valeur]
-                else: 
-                    b = self.enfant[1].valeur
-                    
-                if self.valeur == "+":
-                    resultat = float(a) + float(b)
-                elif self.valeur == "-":
-                    resultat = float(a) - float(b)
-                elif self.valeur == "*":
-                    resultat = float(a) * float(b)
-            else :
-                resultat = dico[self.valeur]
-
-                
-        return resultat
     
   #  def tracer(self,variable,liste):
+
+

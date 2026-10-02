@@ -1,5 +1,6 @@
 from Noeud import Noeud
 from matplotlib import pyplot as plt
+import numpy as np
 
 y = Noeud("y")
 deux = Noeud(2)
@@ -15,3 +16,5 @@ print(exp.polonais())
 dico = {"y":5}
 print(plus.evaluer(dico))
 print(exp.evaluer(dico))
+
+exp.tracer("y", np.linspace(0,100,100))

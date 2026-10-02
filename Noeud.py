@@ -1,5 +1,6 @@
 import numpy as np
-import matplotlib as plt
+from matplotlib import pyplot as plt
+
 class Noeud: 
     def __init__(self , valeur):
         self.valeur = valeur
@@ -22,7 +23,18 @@ class Noeud:
             elif self.valeur == 'exp': return np.exp(self.enfant[0].evaluer(variables))
         raise ValueError("Opérateur/Noeud inconnu")
 
-    # def tracer(self,variable,liste):
-    #     return None 
+    def tracer(self,variable,liste):
+        y_valeurs = []
+        for val in liste:
+            dico = {variable: val}
+            y_valeurs.append(self.evaluer(dico))
 
+        plt.plot(liste, y_valeurs)
+        plt.xlabel(variable)
+        plt.ylabel("Expression")
+        plt.title(f"Courbe de l'expression en fonction de {variable}")
+        plt.grid(True)
+        plt.show()
+
+#print("Voici la modif de anez")
 

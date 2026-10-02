@@ -22,7 +22,7 @@ class Noeud:
             elif self.valeur == 'exp': return np.exp(self.enfant[0].evaluer(variables))
         raise ValueError("Opérateur/Noeud inconnu")
 
-    
-  #  def tracer(self,variable,liste):
+    # def tracer(self,variable,liste):
+    #     return None 
 
 
